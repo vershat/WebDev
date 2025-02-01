@@ -1,0 +1,34 @@
+1. Imports & State Management
+Imports:
+restaurantList from "../../config.js" (initial list of restaurants).
+useState from React (to manage state).
+RestrauntCard from "./Restraunt.js" (to display each restaurant).
+State Variables:
+searchText: Stores the text entered in the search bar.
+restaurants: Stores the list of restaurants (starts with restaurantList).
+2. filterData Function (Filtering Logic)
+Takes two parameters:
+searchText: User input for filtering.
+restaurants: The current list of restaurants.
+Uses .filter() to check if the restaurant’s name includes searchText (case-insensitive).
+Returns the filtered list.
+3. Component UI & Functionality
+Search Bar:
+
+Input field (searchText updates as user types).
+Search button (onClick triggers filtering).
+Issue: The restaurants state gets permanently updated when filtering, so the original list is lost.
+Fix: Store the original list separately (e.g., allRestaurants state).
+Restaurant List:
+
+Uses .map() to display restaurants.
+Each restaurant is passed as props to RestrauntCard.
+Uses key={restaurant.data.id} to optimize React rendering.
+4. Potential Improvements
+Preserve Original Data:
+Introduce a new allRestaurants state to store the original list.
+Update restaurants state only when searching.
+Handle No Results Case:
+Display a message when no restaurants match the search.
+Debounce Search:
+Improve performance by delaying search execution (e.g., using setTimeout).
